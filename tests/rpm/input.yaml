@@ -1,0 +1,52 @@
+particle_types:
+  H:
+    mu: -8.0
+  O:
+    mu: -8.0
+
+
+potential_pairs:
+  H_H:
+    type: 'HS+C'
+    diameter: 1.84
+    epsilon: 1.0
+    q1: 1.0
+    q2: 1.0
+    sigma: 5.0
+  H_O:
+    type: 'HS+C'
+    diameter: 2.76
+    epsilon: 1.0
+    q1: 1.0
+    q2: -1.0
+    sigma: 5.0
+  O_O:
+    type: 'HS+C'
+    diameter: 3.68
+    epsilon: 1.0
+    q1: -1.0
+    q2: -1.0
+    sigma: 5.0
+
+
+
+T: 4000.0
+kB: 1.380649e-23 
+box_length_x: 24.0
+box_length_y: 24.0
+box_length_z: 24.0
+
+global_rc: 10.0
+max_steps: 1000000000
+equilibration: 100000
+output_interval: 2000
+weights:
+  insert: 1.0
+  delete: 1.0
+  displace: 0.2
+  mutate: 0.0
+swap_weights: 0.2
+maxdispl: 1.0
+print_energy: False
+
+init_config: 'initial.xyz'
