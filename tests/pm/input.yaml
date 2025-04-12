@@ -8,7 +8,7 @@ particle_types:
 potential_pairs:
   H_H:
     type: 'HS+C'
-    diameter: 2.76
+    diameter: 1.84
     epsilon: 1.0
     q1: 1.0
     q2: 1.0
@@ -22,7 +22,7 @@ potential_pairs:
     kappa_inv: 5.0
   O_O:
     type: 'HS+C'
-    diameter: 2.76
+    diameter: 3.68
     epsilon: 1.0
     q1: -1.0
     q2: -1.0

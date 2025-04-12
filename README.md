@@ -1,4 +1,5 @@
-# GCMC
+# gcmc
+
 Code to run GCMC simulations
 
 ## About the code

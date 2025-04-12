@@ -18,19 +18,19 @@ potential_pairs:
     diameter: 2.76
     epsilon: 1.0
     q1: 1.0
-    q2: -1.0
+    q2: -2.0
     kappa_inv: 5.0
   O_O:
     type: 'HS+C'
     diameter: 2.76
     epsilon: 1.0
-    q1: -1.0
-    q2: -1.0
+    q1: -2.0
+    q2: -2.0
     kappa_inv: 5.0
 
 
 
-T: 4000.0
+T: 8000.0
 kB: 1.380649e-23 
 box_length_x: 24.0
 box_length_y: 24.0

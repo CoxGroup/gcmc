@@ -70,34 +70,34 @@ class OneComponentPlasmaPotential(Potential):
     def __init__(self, epsilon, q, sigma):
         self.epsilon = epsilon 
         self.q = q  
-        self.sigma = sigma  
+        self.kappa_inv = kappa_inv  
         self.prefactor =  (self.q*const.elementary_charge)**2 / (4 * const.pi * const.epsilon_0 * 1e-10 * self.epsilon )
 
     def calculate(self, r):
-        potential =  self.prefactor * erfc(r/ self.sigma) / r  
+        potential =  self.prefactor * erfc(r/ self.kappa_inv) / r  
         return potential
 
 class HardSphereCoulombPotential(Potential):
-    def __init__(self, diameter, epsilon, q1, q2, sigma):
+    def __init__(self, diameter, epsilon, q1, q2, kappa_inv):
         self.diameter = diameter 
         self.epsilon = epsilon
         self.q1 = q1
         self.q2 = q2
-        self.sigma = sigma
+        self.kappa_inv = kappa_inv
         self.prefactor =  (const.elementary_charge)**2 / (4 * const.pi * const.epsilon_0 * 1e-10 * self.epsilon )
 
     def calculate(self, r):
-        return np.where(r < self.diameter, very_large_number, self.prefactor * self.q1 * self.q2 * erfc(r/ self.sigma) / r)  
+        return np.where(r < self.diameter, very_large_number, self.prefactor * self.q1 * self.q2 * erfc(r/ self.kappa_inv) / r)  
 
 class LennardJonesCoulombPotential(Potential):
-    def __init__(self, epsilon_lj, sigma_lj, rc, epsilon_c, q1, q2, sigma_c):
+    def __init__(self, epsilon_lj, sigma_lj, rc, epsilon_c, q1, q2, kappa_inv):
         self.epsilon_lj = epsilon_lj * 4184 / const.Avogadro # Convert kcal/mol to J
         self.sigma_lj = sigma_lj 
         self.rc = rc
         self.epsilon_c = epsilon_c
         self.q1 = q1
         self.q2 = q2
-        self.sigma_c = sigma_c
+        self.kappa_inv = kappa_inv
         self.prefactor =  (const.elementary_charge)**2 / (4 * const.pi * const.epsilon_0 * 1e-10 * self.epsilon_c )
         
     def calculate(self, r):
@@ -105,7 +105,7 @@ class LennardJonesCoulombPotential(Potential):
         r12 = r6 ** 2
         potential_lj = 4 * self.epsilon_lj * (r12 - r6)
         shift_lj = 4 * self.epsilon_lj * ((self.sigma_lj / self.rc) ** 12 - (self.sigma_lj / self.rc) ** 6)
-        potential_c = self.prefactor * self.q1 * self.q2 * erfc(r/ self.sigma_c) / r
+        potential_c = self.prefactor * self.q1 * self.q2 * erfc(r/ self.kappa_inv) / r
         return np.where(r < self.rc, potential_lj - shift_lj + potential_c, 0.0)
 
 def initialize_potentials(config):
@@ -120,11 +120,11 @@ def initialize_potentials(config):
         elif pair_type == 'HS':
             potential_dict[pair] = HardSpherePotential(sigma=params['sigma'])
         elif pair_type == 'OCP':
-            potential_dict[pair] = OneComponentPlasmaPotential(epsilon=params['epsilon'], q=params['q'], sigma=params['sigma'])
+            potential_dict[pair] = OneComponentPlasmaPotential(epsilon=params['epsilon'], q=params['q'], kappa_inv=params['kappa_inv'])
         elif pair_type == 'HS+C':
-            potential_dict[pair] = HardSphereCoulombPotential(diameter=params['diameter'], epsilon=params['epsilon'], q1=params['q1'], q2=params['q2'], sigma=params['sigma'])
+            potential_dict[pair] = HardSphereCoulombPotential(diameter=params['diameter'], epsilon=params['epsilon'], q1=params['q1'], q2=params['q2'], kappa_inv=params['kappa_inv'])
         elif pair_type == 'LJ+C':
-            potential_dict[pair] = LennardJonesCoulombPotential(epsilon_lj=params['epsilon_lj'], sigma_lj=params['sigma_lj'], rc=params['rc'], epsilon_c=params['epsilon_c'], q1=params['q1'], q2=params['q2'], sigma_c=params['sigma_c'])
+            potential_dict[pair] = LennardJonesCoulombPotential(epsilon_lj=params['epsilon_lj'], sigma_lj=params['sigma_lj'], rc=params['rc'], epsilon_c=params['epsilon_c'], q1=params['q1'], q2=params['q2'], kappa_inv=params['kappa_inv'])
         else:
             raise ValueError(f"Unknown potential type: {pair_type}")
     return potential_dict
