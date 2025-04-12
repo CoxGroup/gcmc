@@ -23,23 +23,10 @@ The Coulombic splitting
 defines the short-ranged potential $v_0(r)$.
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/5c85b7f2-4042-4bcd-b0d6-5e0452f68a2b" width="25%">
+  <img src="https://github.com/user-attachments/assets/5c85b7f2-4042-4bcd-b0d6-5e0452f68a2b" width="30%">
 </div>
 
-## Citation
 
-The following papers illustrate the use of the code:
-
-***A. T. Bui, S. J. Cox, **"Learning classical density functionals for ionic fluids"**, Phys. Rev. Lett. **134**, 148001 (2025)***
-
-Links to: [arXiv:2410.02556](
-https://doi.org/10.48550/arXiv.2410.02556) | [Phys. Rev. Lett.](https://doi.org/10.1103/PhysRevLett.134.148001)
-
-***A. T. Bui, S. J. Cox, **"Dielectrocapillarity for exquisite control of fluids
-"(2025)***
-
-Links to: [arXiv:2503.09855](
-https://doi.org/10.48550/arXiv.2503.09855)
 
 ## Installation
 
@@ -56,7 +43,19 @@ Simply clone the repository:
    git clone https://github.com/annatbui/GCMC.git
    ```
 
+## Citation
 
+The following papers illustrate the use of the code:
+
+***A. T. Bui, S. J. Cox, **"Learning classical density functionals for ionic fluids"**, Phys. Rev. Lett. **134**, 148001 (2025)***
+
+Links to: [arXiv:2410.02556](
+https://doi.org/10.48550/arXiv.2410.02556) | [Phys. Rev. Lett.](https://doi.org/10.1103/PhysRevLett.134.148001)
+
+***A. T. Bui, S. J. Cox, **"Dielectrocapillarity for exquisite control of fluids"(2025)***
+
+Links to: [arXiv:2503.09855](
+https://doi.org/10.48550/arXiv.2503.09855)
 
 ## License
 
