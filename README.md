@@ -52,7 +52,7 @@ The following papers illustrate the use of the code:
 Links to: [arXiv:2410.02556](
 https://doi.org/10.48550/arXiv.2410.02556) | [Phys. Rev. Lett.](https://doi.org/10.1103/PhysRevLett.134.148001)
 
-***A. T. Bui, S. J. Cox, **"Dielectrocapillarity for exquisite control of fluids"(2025)***
+***A. T. Bui, S. J. Cox, **"Dielectrocapillarity for exquisite control of fluids"** (2025)*** 
 
 Links to: [arXiv:2503.09855](
 https://doi.org/10.48550/arXiv.2503.09855)
