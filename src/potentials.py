@@ -67,7 +67,7 @@ class HardSpherePotential(Potential):
         return np.where(r < self.sigma, very_large_number, 0.0)  
 
 class OneComponentPlasmaPotential(Potential):
-    def __init__(self, epsilon, q, sigma):
+    def __init__(self, epsilon, q, kappa_inv):
         self.epsilon = epsilon 
         self.q = q  
         self.kappa_inv = kappa_inv  
